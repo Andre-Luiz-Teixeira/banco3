@@ -55,4 +55,11 @@ public class MdlExtrato {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }    
+
+    @Override
+    public String toString() {
+        return "id: " + this.id + " descricao: " + this.descricao + " tipo: " + this.tipo + " codigo: " + this.codigo;
+    }
+    
+    
 }

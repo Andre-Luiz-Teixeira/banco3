@@ -35,28 +35,42 @@ public class Main {
         //daoConta.Inserir(mdlConta);
         //daoConta.Atualizar(mdlConta);
         //daoConta.Excluir(mdlConta);
-        //arrayConta = daoConta.SelecionarTudo();
+        arrayConta = daoConta.Selecionar(2);
         
         for (MdlConta conta : arrayConta) {
             System.out.println(conta);
         }
          */
 
+        /*
         //Teste de extrato
         MdlExtrato mdlExtrato = new MdlExtrato();
         DaoExtrato daoExtrato = new DaoExtrato();
+        ArrayList<MdlExtrato> arrayExtrato = new ArrayList<>();
 
         //objeto
+     
         mdlExtrato.setId(3);
         mdlExtrato.setDescricao("pagamento");
         mdlExtrato.setValor(100);
         mdlExtrato.setTipo("debito");
         mdlExtrato.setCodigo(2);
-        
+
         //comandos dao
         //daoExtrato.Inserir(mdlExtrato);
-        daoExtrato.Atualizar(mdlExtrato);
+        //daoExtrato.Atualizar(mdlExtrato);
+        //daoExtrato.Excluir(mdlExtrato);
         
+        /*arrayExtrato = daoExtrato.Selecionar(3);
+
+        for (MdlExtrato conta : arrayExtrato) {
+            System.out.println(conta);
+        }*/
         
+        /*arrayExtrato = daoExtrato.Selecionar();
+
+        for (MdlExtrato conta : arrayExtrato) {
+            System.out.println(conta);
+        }*/
     }
 }

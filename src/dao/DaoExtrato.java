@@ -62,8 +62,9 @@ public class DaoExtrato {
         }
     }
 
-    public MdlExtrato Selecionar(int index) {
+    public ArrayList<MdlExtrato> Selecionar(int index) {
         MdlExtrato extrato = new MdlExtrato();
+        ArrayList<MdlExtrato> listaExtrato = new ArrayList<>();
         sql = "select id, descricao, valor, tipo, codigo from extrato where id = ?";
 
         try {
@@ -73,22 +74,24 @@ public class DaoExtrato {
             ResultSet resultado = pst.executeQuery();
             if (resultado.next()) {
                 extrato.setId(resultado.getInt("id"));
-                extrato.setDescricao(resultado.getString("decricao"));
+                extrato.setDescricao(resultado.getString("descricao"));
                 extrato.setValor(resultado.getDouble("valor"));
                 extrato.setTipo(resultado.getString("tipo"));
                 extrato.setCodigo(resultado.getInt("codigo"));
+                
+                listaExtrato.add(extrato);
                 
             }
         } catch (SQLException ex) {
             System.err.println("Erro ao selecionar o objeto extrato: " + ex.getMessage());
         }
 
-        return extrato;
+        return listaExtrato;
     }
 
-    public ArrayList<MdlExtrato> SelecionarTudo() {
+    public ArrayList<MdlExtrato> Selecionar() {
         ArrayList<MdlExtrato> listaExtrato = new ArrayList<>();
-        sql = "select codigo, descricao, saldo from conta";
+        sql = "select id, descricao, valor, tipo, codigo from extrato";
 
         try {
             pst = conexao.prepareStatement(sql);
@@ -98,7 +101,7 @@ public class DaoExtrato {
                 MdlExtrato extrato = new MdlExtrato();
 
                 extrato.setId(resultado.getInt("id"));
-                extrato.setDescricao(resultado.getString("decricao"));
+                extrato.setDescricao(resultado.getString("descricao"));
                 extrato.setValor(resultado.getDouble("valor"));
                 extrato.setTipo(resultado.getString("tipo"));
                 extrato.setCodigo(resultado.getInt("codigo"));

@@ -56,7 +56,8 @@ public class DaoConta {
         }
     }
 
-    public MdlConta Selecionar(int index) {
+    public ArrayList<MdlConta> Selecionar(int index) {
+        ArrayList<MdlConta> listaConta = new ArrayList<>();
         MdlConta conta = new MdlConta();
         sql = "select codigo, descricao, saldo from conta where codigo = ?";
 
@@ -70,16 +71,19 @@ public class DaoConta {
                 conta.setCodigo(resultado.getInt("codigo"));
                 conta.setDescricao(resultado.getString("descricao"));
                 conta.setSaldo(resultado.getDouble("saldo"));
+
+                listaConta.add(conta);
             }
         } catch (SQLException ex) {
             System.err.println("Erro ao selecionar o objeto conta: " + ex.getMessage());
         }
 
-        return conta;
+        return listaConta;
     }
 
-    public ArrayList<MdlConta> SelecionarTudo() {
+    public ArrayList<MdlConta> Selecionar() {
         ArrayList<MdlConta> listaConta = new ArrayList<>();
+        MdlConta conta = new MdlConta();
         sql = "select codigo, descricao, saldo from conta";
 
         try {
@@ -87,8 +91,7 @@ public class DaoConta {
             ResultSet resultado = pst.executeQuery();
 
             while (resultado.next()) {
-                MdlConta conta = new MdlConta();
-
+                
                 conta.setCodigo(resultado.getInt("codigo"));
                 conta.setDescricao(resultado.getString("descricao"));
                 conta.setSaldo(resultado.getDouble("saldo"));
