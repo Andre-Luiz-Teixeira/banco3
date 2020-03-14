@@ -9,7 +9,7 @@ package modelo;
  *
  * @author andre
  */
-public class mdl_conta {
+public class MdlConta {
     private int codigo;
     private String descricao;
     private double saldo;
