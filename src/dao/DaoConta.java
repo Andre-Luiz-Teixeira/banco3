@@ -1,4 +1,4 @@
-package dao;
+ package dao;
 
 import java.sql.Connection;
 import modelo.MdlConta;
@@ -8,12 +8,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DaoConta {
-
+    
     // variaveis usadas em todas as clases
-    Connection conexao = FabricaConexao.GeraConexao(); // Gera conexao com o banco
+    private Connection conexao;
     String sql = "";// recebe o comando no sql
     PreparedStatement pst;
 
+    public DaoConta(){
+        conexao = dao.FabricaConexao.GeraConexaoPadrao();
+    }
+    
+    public DaoConta(Connection cnx){
+        conexao = cnx;
+    }
+    
     public void Inserir(MdlConta conta) {
         sql = "insert into conta(descricao, saldo) values (?, ?)";
 

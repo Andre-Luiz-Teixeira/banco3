@@ -10,9 +10,17 @@ import modelo.MdlExtrato;
 
 public class DaoExtrato {
     // variaveis usadas em todas as clases
-    Connection conexao = FabricaConexao.GeraConexao(); // Gera conexao com o banco
+    private Connection conexao;
     String sql = "";// recebe o comando no sql
     PreparedStatement pst;
+    
+    public DaoExtrato(){
+        conexao = dao.FabricaConexao.GeraConexaoPadrao();
+    }
+    
+    public DaoExtrato(Connection cnx){
+        conexao = cnx;
+    }
 
     public void Inserir(MdlExtrato extrato) {
         sql = "insert into extrato(descricao, valor, tipo, codigo) values (?, ?, ?, ?)";

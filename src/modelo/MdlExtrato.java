@@ -16,6 +16,17 @@ public class MdlExtrato {
     private String tipo;
     private int codigo;
 
+    public MdlExtrato(String descricao, double valor, String tipo, int codigo) {
+        this.descricao = descricao;
+        this.valor = valor;
+        this.tipo = tipo;
+        this.codigo = codigo;
+    }
+
+    public MdlExtrato() {
+    }
+
+    
     public int getId() {
         return id;
     }

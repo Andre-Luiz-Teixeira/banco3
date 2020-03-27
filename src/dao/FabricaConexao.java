@@ -29,7 +29,7 @@ public class FabricaConexao {
         try{
             Class.forName(STR_DRIVER);
             objConexao = DriverManager.getConnection(STR_CON, USER, PASSWORD);
-            System.out.println("Conector com o BD!");
+            System.out.println("Conectou com o BD!");
         }catch (ClassNotFoundException e) {   
             String errorMsg = "Driver nao encontrado: "+e.getMessage();    
             System.out.println(errorMsg);
@@ -39,11 +39,27 @@ public class FabricaConexao {
         }   
     }
  
-    public static Connection GeraConexao() {
+    //padrão single
+    public static Connection GeraConexaoPadrao() {
         if (objConexao == null) {
             FabricaConexao MANTERCONEXAO = new FabricaConexao();
         }
         return objConexao;
     }
      
+    //padrao para transacional
+    public static Connection getConexaoCustomizada(){
+        Connection cnx = null;
+        try {
+            Class.forName(STR_DRIVER);
+            cnx = DriverManager.getConnection(STR_CON, USER, PASSWORD);
+            
+            cnx.setAutoCommit(false);
+            cnx.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+            
+        } catch (Exception ex) {
+            System.err.println("Erro ao gerar a conexão customiada" + ex.getMessage());
+        }
+        return cnx;
+    }
 }

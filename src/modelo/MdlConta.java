@@ -14,6 +14,15 @@ public class MdlConta {
     private String descricao;
     private double saldo;
 
+    public MdlConta(String descricao, double saldo) {
+        this.descricao = descricao;
+        this.saldo = saldo;
+    }
+
+    public MdlConta() {
+    }
+
+    
     public int getCodigo() {
         return codigo;
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14-Mar-2020 às 19:55
+-- Tempo de geração: 26-Mar-2020 às 02:10
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.4.3
 
@@ -33,6 +33,15 @@ CREATE TABLE `conta` (
   `descricao` varchar(45) NOT NULL,
   `saldo` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `conta`
+--
+
+INSERT INTO `conta` (`codigo`, `descricao`, `saldo`) VALUES
+(2, 'Conta Teste', 9000),
+(3, 'teste', 555),
+(5, 'teste2', 999);
 
 -- --------------------------------------------------------
 
@@ -73,13 +82,13 @@ ALTER TABLE `extrato`
 -- AUTO_INCREMENT de tabela `conta`
 --
 ALTER TABLE `conta`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `extrato`
 --
 ALTER TABLE `extrato`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restrições para despejos de tabelas
